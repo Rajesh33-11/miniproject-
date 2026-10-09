@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    REPO = 'https://github.com/Rajesh33-11/miniproject-.git'          // <-- change: github owner/repo
+    REPO = 'Rajesh33-11/miniproject-'
     CPU_LIMIT = '80'
     DISK_LIMIT = '80'
     TARGET_UBUNTU = '24.04'
@@ -45,11 +45,11 @@ pipeline {
       }
     }
 
-    // Only on main branch builds, and never for bot's own commits (loop avoid)
+    // Feature branch push build only (not main, not PR build, not bot's own commit)
     stage('Update Dockerfile & Raise PR') {
       when {
         allOf {
-          branch 'main'
+          not { branch 'main' }
           not { changeRequest() }
           expression {
             def msg = sh(script: 'git log -1 --pretty=%s', returnStdout: true).trim()
