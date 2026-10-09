@@ -1,4 +1,4 @@
-FROM ubuntu: 22.04 jfdvjkiefkl
+FROM ubuntu: 22.04
 
 LABEL maintainer="rajesh@example.com"
 
