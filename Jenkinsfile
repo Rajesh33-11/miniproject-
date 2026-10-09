@@ -65,6 +65,17 @@ pipeline {
         }
       }
     }
+    // PR build only: all checks above passed -> enable auto-merge on this PR
+    stage('Enable Auto-Merge') {
+      when { changeRequest() }
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'github-pat',
+                                          usernameVariable: 'GH_USER',
+                                          passwordVariable: 'GH_TOKEN')]) {
+          sh 'gh pr merge "$CHANGE_ID" --repo "$REPO" --auto --squash --delete-branch'
+        }
+      }
+    }
   }
 
   post {

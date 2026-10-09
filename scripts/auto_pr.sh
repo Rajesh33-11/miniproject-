@@ -42,4 +42,7 @@ else
 fi
 
 # --- 3. Auto-merge once required status checks (Jenkins PR build) pass ---
-gh pr merge --repo "$REPO" "$BRANCH_NAME" --auto --squash --delete-branch
+# Can fail with "unstable status" while this very build is still running.
+# That is OK: the PR build (Enable Auto-Merge stage) retries it.
+gh pr merge --repo "$REPO" "$BRANCH_NAME" --auto --squash --delete-branch \
+  || echo "WARN: auto-merge not enabled yet; PR build will enable it."
