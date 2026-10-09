@@ -1,6 +1,6 @@
 FROM ubuntu:24.04
 
-LABEL maintainer="devops@example.com"
+LABEL maintainer="rajesh@example.com"
 
 # hadolint ignore=DL3008
 RUN apt-get update \
