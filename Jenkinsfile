@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    REPO = 'OWNER/REPO'          // <-- change: github owner/repo
+    REPO = 'https://github.com/Rajesh33-11/miniproject-.git'          // <-- change: github owner/repo
     CPU_LIMIT = '80'
     DISK_LIMIT = '80'
     TARGET_UBUNTU = '24.04'
