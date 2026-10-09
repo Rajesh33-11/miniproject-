@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:28.04
 
 LABEL maintainer="devops@example.com"
 
